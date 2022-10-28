@@ -3,6 +3,7 @@ extern "C"{
     #include "linked_list.h"
     #include "insertion_sort.h"
     #include "list_queue.h"
+    
 }
 
 // File for sandboxing and trying out code
@@ -35,5 +36,13 @@ int main(int argc, char **argv)
     print_queue(q);
     dequeue(q);    
     print_queue(q);
+    dequeue(q);    
+    print_queue(q);
+    dequeue(q);    
+    print_queue(q);
+
+    test1();
+    test2();
+    test3();
     return 0;
 }

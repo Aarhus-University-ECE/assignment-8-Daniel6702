@@ -31,17 +31,56 @@ void enqueue(queue *q, int x) {
   if (empty(q)) { //if queue is empty, new node will be both rear and front
     q->front = temp;
     q->rear = temp;
+  } else {
+    q->rear->next = temp; //else add node to rear of queue
+    q->rear = temp;
   }
-  q->rear->next = temp; //else add node to rear of queue
-  q->rear = temp;
 }
 
 int dequeue(queue *q) {
   assert(empty(q)==false); //the queue cant be empty
-  int data = q->front->data; //save data from front node in queue
+  int data = q->front->data;
   q->front = q->front->next; //dequeue the node
   if (q->front == NULL) { //if front is now empty, then change rear to empty
     q->rear = NULL;
   } 
   return data; //return the saved data from dequeued node
+}
+
+void test1(void) { //(A)
+    queue *q = malloc(sizeof(queue));
+    init_queue(q); 
+    if (empty(q)) { //test if empty
+        printf("Test (A) Successful\n");
+    } else {
+        printf("Test (A) Failed\n");
+    }
+}
+
+void test2(void) {
+    queue *q = malloc(sizeof(queue));
+    init_queue(q);
+    enqueue(q,6); //add element
+    dequeue(q);  //remove element
+
+    if (empty(q)) { //test if empty
+        printf("Test (B) Successful\n");
+    } else {
+        printf("Test (B) Failed\n");
+    }
+}
+
+void test3(void) {
+    int x_0 = 1, x_1 = 2, y_0 = 0, y_1 = 0;
+    queue *q = malloc(sizeof(queue));
+    init_queue(q);
+    enqueue(q,x_0); 
+    enqueue(q,x_1); 
+    y_0 = dequeue(q);
+    y_1 = dequeue(q);  
+    if ((x_0 == y_0 && x_1 == y_1) && empty(q)) {
+        printf("Test (C) Successful\n");
+    } else {
+        printf("Test (C) Failed\n");
+    }
 }

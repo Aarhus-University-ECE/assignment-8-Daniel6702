@@ -7,10 +7,10 @@ void insert_sort(linked_list *sorted,node* new_node){
         insertFront(new_node,sorted);
     } else { //Locate the node before the point of insertion
         node* current = sorted->head;
-        while ((current->next!=NULL) && (current->next->data < new_node->data)){ 
+        while (current->next!=NULL && current->next->data < new_node->data){ 
             current = current->next; 
         } 
-        swap(new_node,current);
+        swap(new_node,current); //insert node at the location
     } 
 }
 void sort(linked_list *list){
