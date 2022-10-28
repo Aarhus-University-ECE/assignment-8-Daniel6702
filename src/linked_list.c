@@ -1,8 +1,8 @@
 #include "linked_list.h"
 
-node_t *createNode(int value)
+node *createNode(int value)
 {
-  node_t *nodePtr = malloc(sizeof(node_t));
+  node *nodePtr = malloc(sizeof(node));
   nodePtr->data = value;
   nodePtr->next = NULL;
   return nodePtr;
@@ -15,25 +15,27 @@ linked_list *createLinkedList()
   return llPtr;
 }
 
-void insertFront(node_t *nodePtr, linked_list *llPtr)
+void insertFront(node *nodePtr, linked_list *llPtr)
 {
   nodePtr->next = llPtr->head;
   llPtr->head = nodePtr;
 }
 
-node_t *swap(node_t *x, node_t *y)
+node *swap(node *x, node *y)
 {
   x->next = y->next;
   y->next = x;
   return y;
 }
+
 bool isempty(linked_list *llPtr)
 {
   return llPtr->head != NULL;
 }
+
 void printLL(linked_list *llPtr)
 {
-  node_t *n = llPtr->head;
+  node *n = llPtr->head;
   while (n != NULL)
   {
     printf("| %d ", n->data);

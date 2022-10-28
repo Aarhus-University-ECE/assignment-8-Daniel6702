@@ -8,17 +8,17 @@ typedef struct node
 {
   int data;
   struct node *next;
-} node_t;
+} node;
 
 typedef struct
 {
-  node_t *head;
+  node *head;
 } linked_list;
 
-node_t *createNode(int value);
+node *createNode(int value);
 linked_list *createLinkedList();
-void insertFront(node_t *nodePtr, linked_list *llPtr);
-node_t *swap(node_t *x, node_t *y);
+void insertFront(node *nodePtr, linked_list *llPtr);
+node *swap(node *x, node *y);
 bool isempty();
 void printLL(linked_list *llPtr);
 
