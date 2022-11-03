@@ -30,6 +30,7 @@ int main(int argc, char **argv)
 
     queue *q = malloc(sizeof(queue));
     init_queue(q);
+    printf("Size: %d\n",q->size);
     enqueue(q,6);
     enqueue(q,4);
     enqueue(q,8);
@@ -40,6 +41,7 @@ int main(int argc, char **argv)
     print_queue(q);
     dequeue(q);    
     print_queue(q);
+
 
     test1();
     test2();

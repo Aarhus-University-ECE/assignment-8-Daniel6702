@@ -3,6 +3,7 @@
 void init_queue(queue *q) {
     q->front = NULL;
     q->rear = NULL;
+    q->size = 0;
 }
 
 int empty(queue *q) {
@@ -21,7 +22,7 @@ void print_queue(queue *q)
     printf("| %d ", n->data);
     n = n->next;
   }
-  printf("|\n");
+  printf("| size: %d\n",q->size);
 }
 
 void enqueue(queue *q, int x) {
@@ -31,9 +32,11 @@ void enqueue(queue *q, int x) {
   if (empty(q)) { //if queue is empty, new node will be both rear and front
     q->front = temp;
     q->rear = temp;
+    q->size = 1;
   } else {
     q->rear->next = temp; //else add node to rear of queue
     q->rear = temp;
+    q->size ++;
   }
 }
 
@@ -41,8 +44,10 @@ int dequeue(queue *q) {
   assert(empty(q)==false); //the queue cant be empty
   int data = q->front->data;
   q->front = q->front->next; //dequeue the node
+  q->size--;
   if (q->front == NULL) { //if front is now empty, then change rear to empty
     q->rear = NULL;
+    q->size = 0;
   } 
   return data; //return the saved data from dequeued node
 }
